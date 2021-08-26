@@ -26,7 +26,7 @@ var requestOptions = {
   method: 'GET'
 };
 
-fetch("http://localhost:8080/productos", requestOptions)
+fetch("https://dsf3diegoracero.herokuapp.com/productos", requestOptions)
   .then(response => response.json())
   .then(result =>{ 
       data = result.productos;
