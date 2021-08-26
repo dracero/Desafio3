@@ -1,0 +1,38 @@
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css">
+</head>
+<body>
+<h1>Estos son los resultados</h1>
+<table data-toggle="table"
+data-flat="true"
+data-search="true"
+data-url="json/data3.json" 
+id="salida">
+  <tr>
+    <th>Title</th>
+    <th>Price</th>
+    <th>Thumbnail</th>
+  </tr>
+</table>
+</body>
+<script>
+var requestOptions = {
+  method: 'GET'
+};
+
+fetch("http://localhost:8080/productos", requestOptions)
+  .then(response => response.json())
+  .then(result =>{ 
+      data = result.productos;
+      data.map((datos) =>{ 
+        $("#salida").append("<tr>"+"<td>"+datos.title+"</td>"+"<td>"+datos.price+"</td>"+"<td>"+datos.thumbnail+"</td>"+"</ tr>");
+      })  
+   })
+  .catch(error => console.log('error', error));
+</script>  
