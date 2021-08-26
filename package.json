@@ -5,7 +5,7 @@
   "type": "module",
   "main": "DiegoRaceroD3.js",
   "scripts": {
-    "start": "babel-node DiegoRaceroD3.js"
+    "start": "node DiegoRaceroD3.js"
   },
   "author": "Diego Racero",
   "license": "ISC",
