@@ -1,5 +1,5 @@
 import express from 'express';
-import fs from 'fs';
+import contenedor from "./lector.js";
 
 const app = express();
 
@@ -20,10 +20,9 @@ const randomInteger = (max, min) => {
 
 app.get('/productos', async (req, res) => {
     try {
-        const archivo = await fs.promises.readFile('productos.txt','utf-8');
-        let archivoParseado = JSON.parse(archivo);
+        const prod = await contenedor.getAll();
         res.send({
-            productos: archivoParseado
+            productos: prod
         });
     } catch (error) {
          console.log(error)
@@ -32,9 +31,8 @@ app.get('/productos', async (req, res) => {
 
 app.get('/productosRandom', async (req, res) =>{
     try {
-        const archivo = await fs.promises.readFile('productos.txt','utf-8')
-        let archivoParseado = JSON.parse(archivo)
-        res.send(archivoParseado[randomInteger(archivoParseado.length,0)])
+        const prod = await contenedor.getAll();
+        res.send(prod[randomInteger(prod.length,0)])
     } catch (error) {
          console.log(error)
     }
