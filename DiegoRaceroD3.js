@@ -7,6 +7,7 @@ const port = 8080;
 
 app.use(express.static('public'));
 
+//aca llamo a la página estática
 app.get('/', (req, res) => {
     res.send('Resultados');
 });
